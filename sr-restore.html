@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Image Restoration via Segmentation Refinement</title>
+
+<!-- Meta tags for search engines to crawl -->
+<meta name="robots" content="index,follow">
+<meta name="description" content="Video-Inpainting.&gt;
+&lt;meta name=" keywords"="">
+
+<!-- Fonts and stuff -->
+<link href="./cali-sketch/project.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./css/project.css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="./projects/cali-sketch/iconize.css">
+<script type="text/javascript" async="" src="./projects/cali-sketch/ga.js.download"></script><script async="" src="./cali-sketch/prettify.js.download"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']]},
+        messageStyle: "none"
+    });
+</script>
+
+<script type="text/javascript">
+            
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-22940424-1']);
+            _gaq.push(['_trackPageview']);
+            
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+            
+</script>
+
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      
+      <div class="section head">
+    <h1>Image Restoration via Segmentation Refinement</h1>
+
+    <div class="authors">
+      <a href="https://xiaweihao.github.io/">Weihao Xia<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a>Yujiu Yang<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--       <a href="http://www.homepages.ucl.ac.uk/~ucakjxu/">Jing-Hao Xue<sup>2</sup></a> -->
+    </div>
+
+    <div class="affiliations">
+      <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<!--       <sup>2</sup> <a>Department of Statistical Science, University College London</a> -->
+    </div>
+
+    <div class="venue"></div>
+  </div>
+  
+
+  <div class="section abstract">
+    <h2>Abstract</h2>
+    <br>
+    <p>
+        Most state-of-the-art semantic segmentation or scene parsing approaches only achieve high accuracy rates in optimal weather conditions. The performance decrease enormously if images with unknown disturbances occur, which is less discussed but appears more in real applications. Most existing research works cast the handling of the challenging adverse conditions as a post-processing step of signal restoration or enhancement after sensing, then feed the restored images for visual understanding. However, the performance will largely depend on the quality of restoration or enhancement. Whether restoration-based approaches would actually boost the semantic segmentation performance remains questionable. In this paper, we propose a novel framework to tackle semantic segmentation and image restoration under adverse environmental conditions, named SR-Restore. The proposed approach contains two components: Semantically-Guided Adaptation, which exploits and leverages semantic information from degraded images then help to refine the segmentation; and Exemplar-Guided Synthesis, which synthesizes restored or enhanced images from semantic label maps given specific degraded exemplars. SR-Restore exploits the possibility of building connections of low-level image processing and high level computer vision tasks, achieving image restoration via segmentation refinement. Extensive experiments on several datasets demonstrate that our approach can not only improve the accuracy of high-level vision tasks with image adaption, but also boosts the perceptual quality and structural similarity of degraded images with image semantic guidance.
+    </p>
+      </div>
+    
+    <div class="section materials">
+  <h2>Materials</h2>
+  <center>
+    <ul>
+          <li class="grid">
+        <div class="griditem">
+    <a href="./docs/SR-Restore.pdf" target="_blank" class="imageLink"><img src="./projects/sr-restore/paper.png" border="0" width="50%"></a><br>
+    </div>
+        </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      <li class="grid">
+      <div class="griditem">
+        <a href=><img src="./projects/sr-restore/code.png"></a><br>
+     </div>
+        </li>
+    
+      </ul>
+      </center>
+      </div>
+
+    <div class="section framework">
+    <h2>Framework</h2>
+    <br>
+        <center><img src="./projects/sr-restore/framework.png" border="0" width="95%"></center>
+    <br>
+    <p>
+        <center>
+        Overview of the proposed architecture.
+        </center>
+    </p>
+    <p>
+        SR-Restore explicitly formulates the  domain two separate but complementary stages: Semantically-Guided Adaptation, which exploits and leverages semantic information from degraded images then help to refine the segmentation, and Exemplar-Guided Synthesis, which synthesizes restored or enhanced images from semantic label maps given specific degraded exemplars.
+    </p>
+    <p>
+        <b>Semantically-Guided Adaptation</b> aims to produce `refined' segmentation maps of degraded images. Taking another look at this process of refinement, we can formulate it as the adaption of segmentation from favourable images to degraded ones.  For this purpose, we adopt a refinement network $G_{ref}$ which takes a segmentation result of degraded image $S_d$ and corresponding image $I_d$ as input. The refinement network $G_{ref}$ `refine' segmentation by learning the adaption of segmentation from favourable images to degraded ones, which exploits the difference between images in two domains and leverages semantic information to refine the segmentation results.
+    </p>
+    <p>
+        <b>Exemplar-Guided Synthesis</b> aims to generate restored images $I_r$  by deploying a restoration network  $G_{res}$. $G_{res}$ takes original degraded image $I_d$ and refined segmentation map $S_r$ as input, and recover  $I_d$ with the complementary and auxiliary semantic information from refined segmentation. Label-based image synthesis is a typical one-to-many translation problem, thus we use the original degraded image as external exemplar to control the global appearances of the output image. This recovery process can also be formulated as guided image synthesis. 
+    </p>
+
+    </div>
+
+    <div class="section visualization">
+        <h2>Results</h2>
+        <br>
+            <center><img src="./projects/sr-restore/results.png" border="0" width="100%"></center>
+    </div>
+
+        
+<br>
+
+<div class="section citation">
+    <h2>Citation</h2>
+    <div class="section bibtex">
+      <pre>@InProceedings{Xia_2019_SRRestore,
+author = {Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao},
+title = {Image Restoration via Segmentation Refinement},
+month = {August},
+year = {2019}
+}</pre>
+      </div>
+      </div>
+
+
+</div></div></body></html>
