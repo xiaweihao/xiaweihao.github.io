@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Unsupervised Multi-Domain Multimodal Image-to-Image Translation with Explicit Domain-Constrained Disentanglement</title>
+
+<!-- Meta tags for search engines to crawl -->
+<meta name="robots" content="index,follow">
+<meta name="description" content="Video-Inpainting.&gt;
+&lt;meta name=" keywords"="">
+
+<!-- Fonts and stuff -->
+<link rel="stylesheet" type="text/css" href="../project.css">
+<link rel="stylesheet" type="text/css" href="./css/project.css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="./projects./iconize.css">
+<script type="text/javascript" async="" src="../ga.js.download"></script><script async="" src="../prettify.js.download"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']]},
+        messageStyle: "none"
+    });
+</script>
+
+<script type="text/javascript">
+            
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-22940424-1']);
+            _gaq.push(['_trackPageview']);
+            
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+            
+</script>
+
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      
+      <div class="section head">
+    <h1>Unsupervised Multi-Domain Multimodal Image-to-Image Translation with Explicit Domain-Constrained Disentanglement</h1>
+
+    <div class="authors">
+      <a href="https://xiaweihao.github.io/">Weihao Xia<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a>Yujiu Yang<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="http://www.homepages.ucl.ac.uk/~ucakjxu/">Jing-Hao Xue<sup>2</sup></a>
+    </div>
+
+    <div class="affiliations">
+      <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      <sup>2</sup> <a>Department of Statistical Science, University College London</a>
+    </div>
+
+    <div class="venue"></div>
+  </div>
+  
+
+  <div class="section abstract">
+    <h2>Abstract</h2>
+    <br>
+    <p>
+        Image-to-image translation has drawn great attention during the past few years. It aims to translate an image in one domain to a target image in another domain. Many applications can be formulated as image-to-image translation problems. However, three big challenges remain in image-to-image translation: 1) the lack of large amounts of aligned training pairs for various tasks; 2) the ambiguity of multiple possible outputs from a single input image; and 3) the lack of simultaneous training for multi-domain translation with a single network. Moreover, we also observed from experiments that the implicit disentanglement of content and style could lead to undesirable results. Therefore in this paper, we propose a unified framework for learning to generate diverse outputs using unpaired training data and allow for simultaneous multi-domain translation via a single model. Furthermore, we investigate how to extract domain supervision information so as to learn domain-constrained disentangled representations and achieve better image-to-image translation. Extensive experiments show that the proposed method outperforms or is comparable with the state-of-the-art methods for various applications.
+    </p>
+      </div>
+    
+    <div class="section materials">
+  <h2>Materials</h2>
+  <center>
+    <ul>
+          <li class="grid">
+        <div class="griditem">
+    <a href="./docs/DCM2IT.pdf" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br>
+    </div>
+        </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      <li class="grid">
+      <div class="griditem">
+        <a href=><img src="./pic/code.png"></a><br>
+     </div>
+        </li>
+    
+      </ul>
+      </center>
+      </div>
+
+    <div class="section framework">
+    <h2>Framework</h2>
+    <br>
+        <center><img src="./pic/framework.png" border="0" width="95%"></center>
+    <br>
+   <p>
+          The pipeline of our method: (a) $n$ domains; (b) two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels randomly selected from two different domains; (c) the first translation; (d) style-swapped images; (e) the second translation; and (f) cycle-reconstructed images. To achieve image translation between domains, we first randomly select two domains, then load two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels. Images from different domains are encoded as domain-invariant content representations $c$ and domain-specific style representations $s$. The two translations are achieved by swapping the style codes and using generator $G$ to produce the translated output images. The first translation constrains the translated images $x^{\prime}$ and $y^{\prime}$ with the proposed disentanglement constrained loss. The second translation constrains the image reconstruction with the cycle consistency loss. Due to the disentangled representations, the style representations are constrained to match the prior Gaussian distribution, so that we can generate several possible outputs by random sampling from this prior. The domain style representations are extracted by the pre-trained feature extractor $E_{\mathcal{Y}}^s$ from the collections of a certain style and constrain the disentanglement of content and style (similarly for $y$, which is omitted for simplicity of the diagram). The multi-domain simultaneous training is implemented by adding specific discriminative labels for each domain.
+    </p>
+    <br>
+        <center><img src="./pic/domain_tranlation.png" border="0" width="95%"></center>
+    <br>
+    <p>
+      Illustration of (a) self translation, (b) intra-domain translation and (c) inter-domain translation. For better comparison, we follow the representations as in [1], and to avoid unnecessary confusion, we change the descriptions. Our model consists of two types of auto-encoders (denoted by red and blue arrows, respectively). Similarly to [2], the latent code of each auto-encoder is composed of a content code $c$ and a style code $s$. The model is trained with adversarial objectives (dotted lines) that ensure the translated images to be indistinguishable from real images in the target domain, as well as with bidirectional reconstruction objectives (dashed lines) that reconstruct both images and latent codes.
+    </p>
+    </div>
+
+        <div class="section visualization">
+            <h2>Results</h2>
+            <br>
+                <center><img src="./pic/result.png" border="0" width="100%"></center>
+        </div>
+
+        
+<br>
+
+<div class="section citation">
+    <h2>Citation</h2>
+    <div class="section bibtex">
+      <pre>@InProceedings{Xia_2019_Explicit,
+author = {Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao},
+title = {Unsupervised Multi-Domain Multimodal Image-to-Image Translation with Explicit Domain-Constrained Disentanglement},
+month = {April},
+year = {2019}
+}</pre>
+      </div>
+      </div>
+
+<div class="section materials">
+    <h2>References</h2>
+      <ol>
+        <li>Xun Huang, Ming-Yu Liu, Serge Belongie, Jan Kautz <a>"MUNIT: Multimodal UNsupervised Image-to-image Translation".</a> ECCV, 2018.</li>
+        <li>Hsin-Ying Lee*, Hung-Yu Tseng*, Jia-Bin Huang, Maneesh Kumar Singh, Ming-Hsuan Yang, <a>"Diverse Image-to-Image Translation via Disentangled Representations".</a> ECCV, 2018.</li>
+      </ol>
+      </div>
+
+
+
+
+</div></div></body></html>
