@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TediGAN: Text-Guided Diverse Image Generation and Manipulation</title>
+
+<!-- Meta tags for search engines to crawl -->
+<meta name="robots" content="index,follow">
+<meta name="description" content="Video-Inpainting.&gt;
+&lt;meta name=" keywords"="">
+
+<!-- Fonts and stuff -->
+<link rel="stylesheet" type="text/css" href="../project.css">
+<link rel="stylesheet" type="text/css" href="./css/project.css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="../iconize.css">
+<script type="text/javascript" async="" src="../ga.js.download"></script>
+<script async="" src="../prettify.js.download"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$']]},
+        messageStyle: "none"
+    });
+</script>
+
+<script type="text/javascript">
+            
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-22940424-1']);
+            _gaq.push(['_trackPageview']);
+            
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+            
+</script>
+
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      
+      <div class="section head">
+    <h1>Controllable Continuous Gaze Redirection</h1>
+
+    <div class="authors">
+      <a href="https://xiaweihao.github.io/">Weihao Xia<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a>Yujiu Yang<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="http://www.homepages.ucl.ac.uk/~ucakjxu/">Jing-Hao Xue<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a>Baoyuan Wu<sup>3</sup></a>
+    </div>
+
+    <div class="affiliations">
+<!--       <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      <sup>2</sup> <a>Department of Statistical Science, University College London</a> -->
+      <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <sup>2</sup> <a>UCL</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <sup>3</sup> <a>Chinese University of Hongkong (Shenzhen)</a>
+    </div>
+
+    <div class="venue"></div>
+  </div>
+  
+
+  <div class="section abstract">
+    <h2>Abstract</h2>
+     <br>
+  <!--  
+    <p align="center">
+      <iframe width="660" height="395" src="https://youtu.be/L8Na2f5viAM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen align="center">
+      </iframe>
+    </p> 
+  -->
+    <br>
+    <center><img src="./pic/teaser.jpg" border="0" width="65%"></center>
+    <p>
+      In this work, we propose <B>TediGAN</B>, a novel framework for multi-modal image generation and manipulation with textual descriptions. The proposed method consists of three components: StyleGAN inversion module, visual-linguistic similarity learning, and instance-level optimization. The inversion module is to train an image encoder to map real images to the latent space of a well-trained StyleGAN. The visual-linguistic similarity is to learn the text-image matching by mapping the image and text into a common embedding space. The instance-level optimization is for identity preservation in manipulation. Our model can provide the lowest effect guarantee, and produce diverse and high-quality images with an unprecedented resolution at 1024. Using a control mechanism based on style-mixing, our TediGAN inherently supports image synthesis with multi-modal inputs, such as sketches or semantic labels with or without instance (text or real image) guidance. To facilitate text-guided multi-modal synthesis, we propose the Multi-Modal CelebA-HQ, a large-scale dataset consisting of real face images and corresponding semantic segmentation map, sketch, and textual descriptions. Extensive experiments on the introduced dataset demonstrate the superior performance of our proposed method. 
+    </p>
+  </div>
+    
+<div class="section materials">
+  <h2>Materials</h2>
+  <center>
+    <ul>
+      <li class="grid">
+        <div class="griditem">
+          <a href="https://arxiv.org/abs/2012.03308" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br> arxiv
+        </div>
+      </li>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+    <li class="grid">
+      <div class="griditem">
+        <a href="https://github.com/weihaox/TediGAN"><img src="./pic/code.png"></a><br> github
+      </div>
+    </li>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+    <li class="grid">
+      <div class="griditem">
+        <a href="https://youtu.be/L8Na2f5viAM"><img src="./pic/video.png"></a><br> video
+      </div>
+    </li>
+  </ul>
+</center>
+</div>
+
+<div class="section framework">
+  <h2>Framework</h2>
+    <br>
+        <center><img src="./pic/mapping.jpg" border="0" width="65%"></center>
+    <br>
+    <p>
+    In this paper, for the first time, we propose a GAN inversion technique that can map multi-modal information, \eg, texts, sketches, or labels, into a common latent space of a pretrained StyleGAN.
+    Based on that, we propose a very simple yet effective method for <B>Te</B>xt-guided <B>di</B>verse image generation and manipulation via <B>GAN</B> (abbreviated as <B>TediGAN</B>). 
+    </p>
+
+    <br>
+        <center><img src="./pic/control_mechanism.jpg" border="0" width="95%"></center>
+    <br>
+
+    <p>
+    Our proposed method introduces three novel modules. The first StyleGAN inversion module learns the inversion where an image encoder can map a real image to the $\mathcal{W}$ space, while the second visual-linguistic similarity module learns linguistic representations that are consistent with the visual representations by projecting both into a common $\mathcal{W}$ space. The third instance-level optimization module is to preserve the identity after editing, which can precisely manipulate the desired attributes consistent with the texts while faithfully reconstructing the unconcerned ones. Our proposed method can generate diverse and high-quality results with a resolution up to $\text{1024}^2$, and inherently support image synthesis with multi-modal inputs, such as sketches or semantic labels with or without instance (texts or real images) guidance.
+    Due to the utilization of a pretrained StyleGAN model, our method can provide the lowest effect guarantee, <i>i.e.</i>, our method can always produce pleasing results no matter how uncommon the given text or image is.
+    </p>
+    </div>
+
+
+<div class="section visualization">
+  <h2>Multi-Modal CelebA-HQ Dataset</h2>
+  <p>   
+    To fill the gaps in the text-to-image synthesis dataset for faces, we create the Multi-Modal CelebA-HQ dataset to facilitate the research community.
+    Following the format of the two popular text-to-image synthesis datasets, <i>i.e.</i>, CUB for birds and COCO for natural scenes, we create ten unique descriptions for each image in the CelebA-HQ dataset. 
+    Besides real faces and textual descriptions, the introduced dataset also contains the label map and sketch for the text-guided generation with multi-modal inputs.
+  </p>
+<br>
+<center><img src="./pic/sample_data.jpg" border="0" width="80%"></center>
+</div>
+
+<div class="section visualization">
+    <h2>Results</h2>
+      <p>
+      	Our method can achieve text-guided diverse image generation and manipulation up to an unprecedented resolution at $\text{1024}^2$.
+      </p>
+      <center><img src="./pic/high-res-gene.png" border="0" width="80%"><br>diverse high-resolution ($\text{1024}^2$) results from text <i>"a smiling young woman with short blonde hair"</i></center><br>
+      <center><img src="./pic/high-res-lab.png" border="0" width="80%"><br>diverse high-resolution ($\text{1024}^2$) results from text and label <i>"he is young and wears beard"</i></center><br>
+      <center><img src="./pic/high-res-skt.png" border="0" width="80%"><br>diverse high-resolution ($\text{1024}^2$) results from text and sketch <i>"a young woman with long black hair"</i></center><br>
+    </div> 
+
+<div class="section citation">
+<h2>Citation</h2>
+<div class="section bibtex">
+<p>If you find our work, code or pre-trained models helpful for your research, please consider to cite:</p>
+<pre>@article{xia2020tedigan,
+  author = {Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao and Wu, Baoyuan},
+  title = {TediGAN: Text-Guided Diverse Image Generation and Manipulation},
+  journal={arXiv preprint arXiv:2012.03308},
+  year={2020}
+}</pre>
+</div>
+</div>
+
+
+
+</div></div></body></html>

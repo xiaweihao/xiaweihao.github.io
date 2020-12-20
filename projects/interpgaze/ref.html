@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"-->
+    <title>Lifespan Age Transformation Synthesis</title>
+
+    <!-- CSS includes -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="mainpage.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="header" class="container-fluid">
+    <div class="row" style="text-align:center;padding:0;margin:0">
+        <h1>Lifespan Age Transformation Synthesis</h1>
+        <div class="authors">
+            <a href="https://homes.cs.washington.edu/~royorel/" target="new">Roy Or-El<sup>1</sup></a>
+            &nbsp;
+            <a href="https://homes.cs.washington.edu/~soumya91/" target="new">Soumyadip Sengupta<sup>1</sup></a>
+            &nbsp;
+            <a href="https://www.ohadf.com/" target="new">Ohad Fried<sup>2</sup></a>
+            &nbsp;
+            <a href="https://research.adobe.com/person/eli-shechtman/" target="new">Eli Shechtman<sup>3</sup></a>
+            &nbsp;
+            <a href="https://homes.cs.washington.edu/~kemelmi/" target="new">Ira Kemelmacher-Shlizerman<sup>1</sup></a>
+            <br>
+            <sup>1</sup>University of Washington &nbsp;&nbsp;&nbsp; <sup>2</sup>Stanford University &nbsp;&nbsp;&nbsp;<sup>3</sup>Adobe Research<br><br>
+        </div>
+
+    </div>
+
+    <div class="row" id="video" style="text-align:center;padding:0;margin:0">
+          <div class="containere" id="image-containexr">
+            <video width="256" height="256" controls>
+                <source src="videos/video1.webm" type="video/webm"/>
+                <source src="videos/video1.mp4" type="video/mp4"/>
+            </video>
+            <video width="256" height="256" controls>
+                <source src="videos/video2.webm" type="video/webm"/>
+                <source src="videos/video2.mp4" type="video/mp4"/>
+            </video>
+            <video width="256" height="256" controls>
+                <source src="videos/video3.webm" type="video/webm"/>
+                <source src="videos/video3.mp4" type="video/mp4"/>
+            </video>
+            <br>
+            <video width="256" height="256" controls>
+                <source src="videos/video4.webm" type="video/webm"/>
+                <source src="videos/video4.mp4" type="video/mp4"/>
+            </video>
+            <video width="256" height="256" controls>
+                <source src="videos/video5.webm" type="video/webm"/>
+                <source src="videos/video5.mp4" type="video/mp4"/>
+            </video>
+            <video width="256" height="256" controls>
+                <source src="videos/video6.webm" type="video/webm"/>
+                <source src="videos/video6.mp4" type="video/mp4"/>
+            </video>
+          </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Abstract</h2>
+We address the problem of single photo age progression and regression---the prediction of how a person might look in the future, or how they looked in the past. Most existing aging methods are limited to changing the texture, overlooking transformations in head shape that occur during the human aging and growth process. This limits the applicability of previous methods to aging of adults to slightly older adults, and application of those methods to photos of children does not produce quality results. We propose a novel multi-domain image-to-image generative adversarial network architecture, whose learned latent space models a continuous bi-directional aging process. The network is trained on the FFHQ dataset, which we labeled for ages, gender, and semantic segmentation. Fixed age classes are used as anchors to approximate  continuous age transformation. Our framework can predict a full head portrait for ages 0--70 from a single photo, modifying both texture and shape of the head. We demonstrate results on a wide variety of photos and datasets, and show significant improvement over the state of the art.
+</div>
+
+<div class="container">
+    <h2>Videos</h2>
+<table>
+    <tr class="justify-content-center align-items-center">
+        <th><iframe width="560" height="315" src="https://www.youtube.com/embed/_jTFcjN2hBk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></th>
+        <th><iframe width="560" height="315" src="https://www.youtube.com/embed/9fulnt2_q_Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></th>
+    </tr>
+    <tr>
+        <th class="text-center"> 1 Minute teaser </th>
+        <th class="text-center"> Full video </th>
+    </tr>
+</table>
+</div>
+
+<div class="container" >
+    <h2>Code</h2>
+    <div>
+         <a href="https://github.com/royorel/Lifespan_Age_Transformation_Synthesis" target="new">Lifespan Age Transformation Synthesis (Github)</a><br>
+         <a href="https://colab.research.google.com/github/royorel/Lifespan_Age_Transformation_Synthesis/blob/master/LATS_demo.ipynb" target="new">Lifespan Age Transformation Synthesis demo (Google Colab)</a>
+     </div>
+</div>
+
+<div class="container" >
+    <h2>FFHQ-Aging dataset</h2>
+    <div>
+         <a href="https://github.com/royorel/FFHQ-Aging-Dataset" target="new">FFHQ-Aging-Dataset (github)</a>
+     </div>
+</div>
+
+<div class="container" >
+    <h2>Comparisons to baseline algorithms</h2>
+    We show comparisons to state-of-the-art methods, that can't be published in the paper due to copyrights issues
+    <div>
+         <a href="Lifespan_Age_Transformation_Synthesis_comps.pdf" target="new">SoTA Comparisons</a>
+     </div>
+</div>
+
+<div class="container" >
+    <h2>Paper</h2>
+    <div>
+    <a href="https://arxiv.org/pdf/2003.09764.pdf" target="new">Arxiv</a>
+    <br><br>
+         <pre class="citation">@inproceedings{orel2020lifespan,
+         title={Lifespan Age Transformation Synthesis},
+         author={Or-El, Roy and
+                 Sengupta, Soumyadip and
+                 Fried, Ohad and
+                 Shechtman, Eli and
+                 Kemelmacher-Shlizerman, Ira},
+         booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+         year={2020}} </pre>
+     </div>
+</div>
+
+<div class="container">
+    <h2>Acknowledgements</h2>
+    We wish to thank Xuan Luo and Aaron Wetzler for their valuable discussions and
+    advice, and Thevina Dokka for her help in building the FFHQ-Aging dataset.
+    This work was supported in part by Futurewei Technologies. Ohad Fried was supported
+    by the Brown Institute for Media Innovation.
+</div>
+
+<div class="container" >
+  <h2>Contact</h2>
+  <div>
+  <a href="mailto:royorel@cs.uw.edu">Roy Or-El</a>
+  </div>
+</div>
+
+<div id="footer">
+</div>
+
+<!-- Javascript includes -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+</body></html>
