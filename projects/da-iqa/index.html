@@ -42,7 +42,7 @@
     <div id="content-inner">
       
       <div class="section head">
-    <h1>Domain-Aware No-Reference Image Quality Assessment</h1>
+    <h1>Domain Fingerprints for No-reference Image Quality Assessment</h1>
 
     <div class="authors">
       <a href="https://xiaweihao.github.io/">Weihao Xia<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -51,8 +51,10 @@
     </div>
 
     <div class="affiliations">
-      <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-      <sup>2</sup> <a>Department of Statistical Science, University College London</a>
+<!--       <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      <sup>2</sup> <a>Department of Statistical Science, University College London</a> -->
+      <sup>1</sup> <a>Tsinghua University</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <sup>2</sup> <a>UCL</a>
     </div>
 
     <div class="venue"></div>
@@ -63,7 +65,7 @@
     <h2>Abstract</h2>
     <br>
     <p>
-      No-reference image quality assessment (NR-IQA) is a fundamental yet challenging task in low-level computer vision community. It is the task to predict the perceptual quality of an image with unknown distortion information and requires to be highly correlated with human visual perception. The difficulty is particularly pronounced for the limited information, for which the corresponding reference for comparison is typically absent. Various feature extraction mechanisms have been leveraged to boost the performance from natural scene statistics to deep features. However, these methods treat images of different degradations as the same and the representations of distortions are under-exploited. Furthermore, since images with different distortion may share very similar quality scores, identifying the distortion type should be an important part for NR-IQA, which is rarely addressed in the previous methods. In this work, we propose the domain-aware no-reference image quality assessment (DA-NR-IQA), which first exploits the distorted representation of specific degradation for image quality assessment. Extensive experiments show that the proposed DA-NR-IQA performs statistically better than all the other state-of-the-art NR-IQA methods.
+      Human fingerprints are detailed and nearly unique markers of human identity. Such a unique and stable fingerprint is also left on each acquired image. It can reveal how an image was degraded during the image acquisition procedure and thus is closely related to the quality of an image. In this work, we propose a new no-reference image quality assessment (NR-IQA) approach called domain-aware IQA (DA-IQA), which for the first time introduces the concept of domain fingerprint to the NR-IQA field. The domain fingerprint of an image is learned from image collections of different degradations and then used as the unique characteristics to identify the degradation sources and assess the quality of the image. To this end, we design a new domain-aware architecture, which enables simultaneous determination of both the distortion sources and the quality of an image. With the distortion in an image better characterized, the image quality can be more accurately assessed, as verified by extensive experiments, which show that the proposed DA-IQA performs better than almost all the compared state-of-the-art NR-IQA methods.
     </p>
       </div>
     
@@ -73,14 +75,14 @@
     <ul>
           <li class="grid">
         <div class="griditem">
-    <a href="./docs/DA-IQA.pdf" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br>
+    <a href="https://arxiv.org/abs/1911.00673" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br> arxiv
     </div>
         </li>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       
       <li class="grid">
       <div class="griditem">
-        <a href=><img src="./pic/code.png"></a><br>
+        <a href=><img src="./pic/code.png"></a><br> github (coming)
      </div>
         </li>
     
@@ -91,7 +93,7 @@
     <div class="section framework">
     <h2>Framework</h2>
     <br>
-        <center><img src="./pic/framework.png" border="0" width="95%"></center>
+        <center><img src="./pic/framework.jpg" border="0" width="95%"></center>
     <br>
    <p>
       The framework of the proposed DA-NR-IQA. Given a dataset that contains several collections of images with different degradations (a), refer as $n$ domains, we first randomly select a distorted image together with its specific domain label from a certain domain $I_d^i \in \mathcal{D}_{i}$, the generator of Domain-Aware Image Restoration Network (b) aims to separate the distortion $d$ from $I_d$ to get the restoration $I_r$ while the discriminator tries to distinguish if the input image is real or fake and domain discriminator recognizes the category. The original distorted image and its discrepancy map are fed into Discrepancy-Guided Quality Regression Network (c). Features are extracted by a CNN and fused as difference, concatenation with high-level semantic vector. The double arrows means the corresponding module are Siamese Network. Then the fused feature is regressed to a patchwise quality and weight estimation.
@@ -108,16 +110,16 @@
 <br>
 
 <div class="section citation">
-    <h2>Citation</h2>
-    <div class="section bibtex">
-      <pre>@InProceedings{Xia_2019_Explicit,
-author = {Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao},
-title = {Domain-Aware No-Reference Image Quality Assessment},
-month = {June},
-year = {2019}
+<h2>Citation</h2>
+<div class="section bibtex">
+<pre>@article{xia2020domain,
+  title={Domain Fingerprints for No-reference Image Quality Assessment},
+  author={Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao and Xiao, Jing},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology (T-CSVT)},
+  year={2020},
 }</pre>
-      </div>
-      </div>
+</div>
+</div>
 
 
 

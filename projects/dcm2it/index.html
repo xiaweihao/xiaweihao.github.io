@@ -66,34 +66,33 @@
     </p>
       </div>
     
-    <div class="section materials">
+<div class="section materials">
   <h2>Materials</h2>
   <center>
     <ul>
-          <li class="grid">
+      <li class="grid">
         <div class="griditem">
-    <a href="./docs/DCM2IT.pdf" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br>
-    </div>
-        </li>
+          <a href="https://arxiv.org/abs/1911.00622" target="_blank" class="imageLink"><img src="./pic/paper.png" border="0" width="50%"></a><br> arxiv
+        </div>
+      </li>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       
       <li class="grid">
-      <div class="griditem">
-        <a href=><img src="./pic/code.png"></a><br>
-     </div>
-        </li>
-    
-      </ul>
-      </center>
-      </div>
+        <div class="griditem">
+          <a href="https://github.com/weihaox/DCMIT"><img src="./pic/code.png"></a><br> github
+        </div>
+      </li> 
+    </ul>
+  </center>
+</div>
 
-    <div class="section framework">
-    <h2>Framework</h2>
+<div class="section framework">
+  <h2>Framework</h2>
     <br>
         <center><img src="./pic/framework.png" border="0" width="95%"></center>
     <br>
-   <p>
-          The pipeline of our method: (a) $n$ domains; (b) two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels randomly selected from two different domains; (c) the first translation; (d) style-swapped images; (e) the second translation; and (f) cycle-reconstructed images. To achieve image translation between domains, we first randomly select two domains, then load two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels. Images from different domains are encoded as domain-invariant content representations $c$ and domain-specific style representations $s$. The two translations are achieved by swapping the style codes and using generator $G$ to produce the translated output images. The first translation constrains the translated images $x^{\prime}$ and $y^{\prime}$ with the proposed disentanglement constrained loss. The second translation constrains the image reconstruction with the cycle consistency loss. Due to the disentangled representations, the style representations are constrained to match the prior Gaussian distribution, so that we can generate several possible outputs by random sampling from this prior. The domain style representations are extracted by the pre-trained feature extractor $E_{\mathcal{Y}}^s$ from the collections of a certain style and constrain the disentanglement of content and style (similarly for $y$, which is omitted for simplicity of the diagram). The multi-domain simultaneous training is implemented by adding specific discriminative labels for each domain.
+    <p>
+      The pipeline of our method: (a) $n$ domains; (b) two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels randomly selected from two different domains; (c) the first translation; (d) style-swapped images; (e) the second translation; and (f) cycle-reconstructed images. To achieve image translation between domains, we first randomly select two domains, then load two batches of images $x\in \mathcal{D_X}$, $y\in \mathcal{D_Y}$ with corresponding specific discriminative labels. Images from different domains are encoded as domain-invariant content representations $c$ and domain-specific style representations $s$. The two translations are achieved by swapping the style codes and using generator $G$ to produce the translated output images. The first translation constrains the translated images $x^{\prime}$ and $y^{\prime}$ with the proposed disentanglement constrained loss. The second translation constrains the image reconstruction with the cycle consistency loss. Due to the disentangled representations, the style representations are constrained to match the prior Gaussian distribution, so that we can generate several possible outputs by random sampling from this prior. The domain style representations are extracted by the pre-trained feature extractor $E_{\mathcal{Y}}^s$ from the collections of a certain style and constrain the disentanglement of content and style (similarly for $y$, which is omitted for simplicity of the diagram). The multi-domain simultaneous training is implemented by adding specific discriminative labels for each domain.
     </p>
     <br>
         <center><img src="./pic/domain_tranlation.png" border="0" width="95%"></center>
@@ -103,26 +102,25 @@
     </p>
     </div>
 
-        <div class="section visualization">
-            <h2>Results</h2>
-            <br>
-                <center><img src="./pic/result.png" border="0" width="100%"></center>
-        </div>
-
-        
+    <div class="section visualization">
+        <h2>Results</h2>
+        <br>
+            <center><img src="./pic/result.png" border="0" width="100%"></center>
+    </div>      
 <br>
 
 <div class="section citation">
-    <h2>Citation</h2>
-    <div class="section bibtex">
-      <pre>@InProceedings{Xia_2019_Explicit,
-author = {Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao},
-title = {Unsupervised Multi-Domain Multimodal Image-to-Image Translation with Explicit Domain-Constrained Disentanglement},
-month = {April},
-year = {2019}
+<h2>Citation</h2>
+<div class="section bibtex">
+<pre>@article{xia2020unsupervised,
+  title={Unsupervised Multi-Domain Multimodal Image-to-Image Translation <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with Explicit Domain-Constrained Disentanglement},
+  author={Xia, Weihao and Yang, Yujiu and Xue, Jing-Hao},
+  journal={Neural Networks},
+  year={2020},
+  publisher={Elsevier}
 }</pre>
-      </div>
-      </div>
+</div>
+</div>
 
 <div class="section materials">
     <h2>References</h2>
@@ -130,9 +128,6 @@ year = {2019}
         <li>Xun Huang, Ming-Yu Liu, Serge Belongie, Jan Kautz <a>"MUNIT: Multimodal UNsupervised Image-to-image Translation".</a> ECCV, 2018.</li>
         <li>Hsin-Ying Lee*, Hung-Yu Tseng*, Jia-Bin Huang, Maneesh Kumar Singh, Ming-Hsuan Yang, <a>"Diverse Image-to-Image Translation via Disentangled Representations".</a> ECCV, 2018.</li>
       </ol>
-      </div>
-
-
-
+</div>
 
 </div></div></body></html>
